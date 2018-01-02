@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sirLiu.dao.ManagerMapper" >
+  <resultMap id="BaseResultMap" type="cn.sirLiu.model.Manager" >
+    <constructor >
+      <idArg column="manager_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="manager_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="manager_sex" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="manager_living_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    manager_id, manager_name, manager_sex, manager_living_address
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.sirLiu.model.ManagerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from manager
+    where manager_id = #{managerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from manager
+    where manager_id = #{managerId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.sirLiu.model.ManagerExample" >
+    delete from manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.sirLiu.model.Manager" >
+    insert into manager (manager_id, manager_name, manager_sex, 
+      manager_living_address)
+    values (#{managerId,jdbcType=INTEGER}, #{managerName,jdbcType=VARCHAR}, #{managerSex,jdbcType=CHAR}, 
+      #{managerLivingAddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.sirLiu.model.Manager" >
+    insert into manager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="managerId != null" >
+        manager_id,
+      </if>
+      <if test="managerName != null" >
+        manager_name,
+      </if>
+      <if test="managerSex != null" >
+        manager_sex,
+      </if>
+      <if test="managerLivingAddress != null" >
+        manager_living_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="managerId != null" >
+        #{managerId,jdbcType=INTEGER},
+      </if>
+      <if test="managerName != null" >
+        #{managerName,jdbcType=VARCHAR},
+      </if>
+      <if test="managerSex != null" >
+        #{managerSex,jdbcType=CHAR},
+      </if>
+      <if test="managerLivingAddress != null" >
+        #{managerLivingAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.sirLiu.model.ManagerExample" resultType="java.lang.Integer" >
+    select count(*) from manager
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update manager
+    <set >
+      <if test="record.managerId != null" >
+        manager_id = #{record.managerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.managerName != null" >
+        manager_name = #{record.managerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.managerSex != null" >
+        manager_sex = #{record.managerSex,jdbcType=CHAR},
+      </if>
+      <if test="record.managerLivingAddress != null" >
+        manager_living_address = #{record.managerLivingAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update manager
+    set manager_id = #{record.managerId,jdbcType=INTEGER},
+      manager_name = #{record.managerName,jdbcType=VARCHAR},
+      manager_sex = #{record.managerSex,jdbcType=CHAR},
+      manager_living_address = #{record.managerLivingAddress,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.sirLiu.model.Manager" >
+    update manager
+    <set >
+      <if test="managerName != null" >
+        manager_name = #{managerName,jdbcType=VARCHAR},
+      </if>
+      <if test="managerSex != null" >
+        manager_sex = #{managerSex,jdbcType=CHAR},
+      </if>
+      <if test="managerLivingAddress != null" >
+        manager_living_address = #{managerLivingAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where manager_id = #{managerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.sirLiu.model.Manager" >
+    update manager
+    set manager_name = #{managerName,jdbcType=VARCHAR},
+      manager_sex = #{managerSex,jdbcType=CHAR},
+      manager_living_address = #{managerLivingAddress,jdbcType=VARCHAR}
+    where manager_id = #{managerId,jdbcType=INTEGER}
+  </update>
+</mapper>
