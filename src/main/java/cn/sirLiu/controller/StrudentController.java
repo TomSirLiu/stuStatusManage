@@ -15,11 +15,59 @@ public class StrudentController {
     @Autowired
     private StudentMapper studentMapper;
 
-    @RequestMapping(value = "test")
-    public String index(){
+    @RequestMapping(value = "/addStudent")
+    public String addStudent(){
         StudentMapper ge = studentMapper;
         System.out.println(studentMapper);
-        return "temp";
+        return "addStudent";
     }
 
+    @RequestMapping(value = "/alterStudent")
+    public String alterStudent(){
+        StudentMapper ge = studentMapper;
+        System.out.println(studentMapper);
+        return "alterStudent";
+    }
+
+    @RequestMapping(value = "/selectAndDeleteStudent")
+    public String selectAndDeleteStudent(){
+        StudentMapper ge = studentMapper;
+        System.out.println(studentMapper);
+        return "selectAndDeleteStudent";
+    }
+
+    @RequestMapping(value = "/alterStuStatus")
+    public String alterStuStatus(){
+        StudentMapper ge = studentMapper;
+        System.out.println(studentMapper);
+        return "alterStuStatus";
+    }
+
+    @RequestMapping(value = "/importScore")
+    public String importScore(){
+        StudentMapper ge = studentMapper;
+        System.out.println(studentMapper);
+        return "importScore";
+    }
+
+    @RequestMapping(value = "/selectAndDeleteScore")
+    public String selectAndDeleteScore(){
+        StudentMapper ge = studentMapper;
+        System.out.println(studentMapper);
+        return "selectAndDeleteScore";
+    }
+
+    @RequestMapping(value = "/gradeStatisticsAndRanking")
+    public String gradeStatisticsAndRanking(){
+        StudentMapper ge = studentMapper;
+        System.out.println(studentMapper);
+        return "gradeStatisticsAndRanking";
+    }
+
+    @RequestMapping(value = "/chooseCourseWithClass")
+    public String chooseCourseWithClass(){
+        StudentMapper ge = studentMapper;
+        System.out.println(studentMapper);
+        return "chooseCourseWithClass";
+    }
 }
