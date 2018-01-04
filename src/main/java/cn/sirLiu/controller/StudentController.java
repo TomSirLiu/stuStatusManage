@@ -2,7 +2,7 @@ package cn.sirLiu.controller;
 
 import cn.sirLiu.model.Student;
 import cn.sirLiu.model.json.Msg;
-import cn.sirLiu.model.json.StudentJSON;
+import cn.sirLiu.model.json.StudentJson;
 import cn.sirLiu.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @Author sirLiu
@@ -89,15 +90,49 @@ public class StudentController {
         }
     }
 
+    @RequestMapping(value = "/selectStuByCondition")
+    @ResponseBody
+    public String selectStuByCondition(@RequestParam(value = "selectStuID",required = false)Integer stuID,
+                                       @RequestParam(value = "selectStuName",required = false)String stuName,
+                                       @RequestParam(value = "selectStuSex",required = false)String stuSex){
+        CopyOnWriteArrayList<Student> students = (CopyOnWriteArrayList<Student>) studentService.selectAllStu();
+        if(stuID!=null){
+            for (Student student: students){
+                if(!student.getStuId().equals(stuID)){
+                    students.remove(student);
+                }
+            }
+        }
+        if(stuName!=null){
+            for (Student student: students){
+                if(!student.getStuName().equals(stuName)){
+                    students.remove(student);
+                }
+            }
+        }
+        if(stuSex!=null){
+            for (Student student: students){
+                if(!student.getStuSex().equals(stuSex)){
+                    students.remove(student);
+                }
+            }
+        }
+        List<StudentJson> studentsJson = new ArrayList<>();
+        for (Student student : students) {
+            studentsJson.add(studentService.convertStudentToJSON(student));
+        }
+        return Msg.success().add("selectedStudents", studentsJson).toString();
+    }
+
     @RequestMapping(value = "/selectAllStu")
     @ResponseBody
     public String selectAllStu() {
         List<Student> students = studentService.selectAllStu();
-        List<StudentJSON> studentJSONS = new ArrayList<>();
+        List<StudentJson> studentsJson = new ArrayList<>();
         for (Student student : students) {
-            studentJSONS.add(studentService.convertStudentToJSON(student));
+            studentsJson.add(studentService.convertStudentToJSON(student));
         }
-        return Msg.success().add("allStudents", studentJSONS).toString();
+        return Msg.success().add("allStudents", studentsJson).toString();
     }
 
 }

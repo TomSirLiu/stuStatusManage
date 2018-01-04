@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Author sirLiu
  * @Date 2018/1/4 11:56
  */
-public class StudentJSON {
+public class StudentJson {
 
     private Integer stuId;
 

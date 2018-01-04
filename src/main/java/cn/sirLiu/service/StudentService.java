@@ -6,8 +6,7 @@ import cn.sirLiu.dao.StuStatusMapper;
 import cn.sirLiu.dao.StudentMapper;
 import cn.sirLiu.model.Student;
 import cn.sirLiu.model.StudentExample;
-import cn.sirLiu.model.json.StudentJSON;
-import jdk.nashorn.internal.ir.IdentNode;
+import cn.sirLiu.model.json.StudentJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -52,8 +51,8 @@ public class StudentService {
         return studentMapper.updateByPrimaryKey(student);
     }
 
-    public StudentJSON convertStudentToJSON(Student student) {
-        StudentJSON studentJSON = new StudentJSON();
+    public StudentJson convertStudentToJSON(Student student) {
+        StudentJson studentJSON = new StudentJson();
         studentJSON.setStuId(student.getStuId());
         studentJSON.setStuName(student.getStuName());
         studentJSON.setStuAge(student.getStuAge());

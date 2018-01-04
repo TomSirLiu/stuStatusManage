@@ -13,7 +13,7 @@
                         <div class="form-group col-md-4">
                             <label class="col-sm-2 control-label">学号</label>
                             <div class="col-sm-3">
-                                <input type="number" class="form-control" placeholder="import student's ID">
+                                <input type="number" class="form-control"  placeholder="import student's ID">
                             </div>
                         </div>
                         <div class="form-group col-md-4">
