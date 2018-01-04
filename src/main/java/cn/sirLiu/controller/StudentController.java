@@ -45,6 +45,28 @@ public class StudentController {
         return "redirect:/page/addStudentPage";
     }
 
+    @RequestMapping(value = "/alterStudent")
+    public String alterStudent(@RequestParam("alterStuID") Integer stuId,
+                             @RequestParam("alterStuName") String stuName,
+                             @RequestParam("alterStuAge") Integer stuAge,
+                             @RequestParam("alterStuSex") String stuSex,
+                             @RequestParam("alterStuAddress") String stuAddress,
+                             @RequestParam("alterStuStatusID") Integer stuStatusID,
+                             @RequestParam("alterStuClassID") Integer stuClassID,
+                             @RequestParam("alterStuManagerID") Integer stuManagerID) {
+        Student student = studentService.selectStuByID(stuId);
+        student.setStuId(stuId);
+        student.setStuName(stuName);
+        student.setStuAge(stuAge);
+        student.setStuSex(stuSex);
+        student.setStuAddress(stuAddress);
+        student.setStuStatusId(stuStatusID);
+        student.setStuClassId(stuClassID);
+        student.setManagerId(stuManagerID);
+        studentService.updateStu(student);
+        return "redirect:/page/alterStudentPage";
+    }
+
     @RequestMapping(value = "/deleteStuByID")
     @ResponseBody
     public String deleteStuByID(@RequestParam(value = "selectStuID") Integer stuID) {

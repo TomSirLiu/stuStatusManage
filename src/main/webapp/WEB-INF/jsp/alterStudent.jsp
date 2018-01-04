@@ -6,47 +6,51 @@
         <jsp:include page="common/nav-sidebar.jsp"/>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="alterStudentForm" action="/stuStatusManage/alter">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">学号</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" id="alterStuId" value="007">
+                        <input type="number" class="form-control" id="alterStuId" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">姓名</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="alterStuName" value="..">
+                        <input type="text" class="form-control" name="alterStuName" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">年龄</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" id="alterStuAge" value="3" >
+                        <input type="number" class="form-control" name="alterStuAge" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">性别</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="alterStuSex" value="..">
+                        <input type="text" class="form-control" name="alterStuSex" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">籍贯</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="alterStuAddress" value="..">
+                        <input type="text" class="form-control" name="alterStuAddress" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">班级编号</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" id="alterStuClassName" value="1">
+                        <select class="form-control" name="alterStuClassID" id="addStuClassID">
+
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">所属管理员编号</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control"  id="ManagerForAlterStu" value="1">
+                        <select class="form-control" name="alterStuManagerID" id="addStuManagerID">
+                            <%--<option value="james">james</option>--%>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -61,3 +65,6 @@
 </div>
 
 <jsp:include page="common/final.jsp"/>
+<script src="${pageContext.request.contextPath}/assets/js/myJS/base.js" ></script>
+<script src="${pageContext.request.contextPath}/assets/js/myJS/alterStudent.js" ></script>
+

@@ -1,5 +1,8 @@
 package cn.sirLiu.service;
 
+import cn.sirLiu.dao.ClassMapper;
+import cn.sirLiu.dao.ManagerMapper;
+import cn.sirLiu.dao.StuStatusMapper;
 import cn.sirLiu.dao.StudentMapper;
 import cn.sirLiu.model.Student;
 import cn.sirLiu.model.StudentExample;
@@ -20,6 +23,15 @@ public class StudentService {
     @Autowired
     private StudentMapper studentMapper;
 
+    @Autowired
+    private StuStatusMapper stuStatusMapper;
+
+    @Autowired
+    private ClassMapper classMapper;
+
+    @Autowired
+    private ManagerMapper managerMapper;
+
     public int addStudent(Student student) {
         return studentMapper.insert(student);
     }
@@ -36,14 +48,9 @@ public class StudentService {
         return studentMapper.selectByExample(new StudentExample());
     }
 
-    @Autowired
-    private StuStatusService stuStatusService;
-
-    @Autowired
-    private ClassService classService;
-
-    @Autowired
-    private ManagerService managerService;
+    public int updateStu(Student student){
+        return studentMapper.updateByPrimaryKey(student);
+    }
 
     public StudentJSON convertStudentToJSON(Student student) {
         StudentJSON studentJSON = new StudentJSON();
@@ -52,9 +59,9 @@ public class StudentService {
         studentJSON.setStuAge(student.getStuAge());
         studentJSON.setStuAddress(student.getStuAddress());
         studentJSON.setStuSex(student.getStuSex());
-        studentJSON.setStuStatus(stuStatusService.selectStuStatusByID(student.getStuStatusId()));
-        studentJSON.setStuClass(classService.selectClassByID(student.getStuClassId()));
-        studentJSON.setManager(managerService.selectManagerByID(student.getManagerId()));
+        studentJSON.setStuStatus(stuStatusMapper.selectByPrimaryKey(student.getStuStatusId()));
+        studentJSON.setStuClass(classMapper.selectByPrimaryKey(student.getStuClassId()));
+        studentJSON.setManager(managerMapper.selectByPrimaryKey(student.getManagerId()));
         return studentJSON;
     }
 
