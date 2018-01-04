@@ -13,46 +13,46 @@
     stu_class_id int(2) comment '班级编号',
     manager_id int(5) comment '管理员编号',--%>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="addStudentForm">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">学号</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" placeholder="import student's ID">
+                        <input type="number" class="form-control" placeholder="import student's ID" name="addStuID" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">姓名</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" placeholder="import student's name">
+                        <input type="text" class="form-control" placeholder="import student's name" name="addStuName" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">年龄</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" placeholder="import student's age">
+                        <input type="number" class="form-control" placeholder="import student's age" name="addStuAge" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">性别</label>
                     <div class="col-sm-8">
                         <label class="radio-inline">
-                            <input type="radio" name="studentSex" value="男"> 男
+                            <input type="radio" name="addStuSex" value="男" required="required"> 男
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="studentSex" value="女"> 女
+                            <input type="radio" name="addStuSex" value="女" required="required"> 女
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">籍贯</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" placeholder="import student's address">
+                        <input type="text" class="form-control" placeholder="import student's address" name="addStuAddress" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">状态</label>
                     <div class="col-sm-8">
-                        <select class="form-control">
+                        <select class="form-control" name="addStuStatusID">
                             <option value="在读">在读</option>
                             <option value="已毕业">已毕业</option>
                             <option value="留级">留级</option>
@@ -63,18 +63,15 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">班级编号</label>
                     <div class="col-sm-8">
-                        <select class="form-control">
-                            <option value="在读">在读</option>
-                            <option value="已毕业">已毕业</option>
-                            <option value="留级">留级</option>
-                            <option value="休学">休学</option>
+                        <select class="form-control" name="addStuClassID">
+
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">所属管理员</label>
                     <div class="col-sm-8">
-                        <select class="form-control">
+                        <select class="form-control" name="addStuManagerID">
                              <option value="james">james</option>
                         </select>
                     </div>
@@ -91,5 +88,6 @@
 
     </div>
 </div>
-
 <jsp:include page="common/final.jsp" />
+
+<script src="${pageContext.request.contextPath}/assets/js/myJS/addStudent.js" ></script>
