@@ -24,7 +24,6 @@ public class StudentController {
     private StudentService studentService;
 
     @RequestMapping(value = "/addStudent")
-    @ResponseBody
     public String addStudent(@RequestParam("addStuID") Integer stuId,
                              @RequestParam("addStuName") String stuName,
                              @RequestParam("addStuAge") Integer stuAge,
@@ -42,12 +41,8 @@ public class StudentController {
         student.setStuStatusId(stuStatusID);
         student.setStuClassId(stuClassID);
         student.setManagerId(stuManagerID);
-        int result = studentService.addStudent(student);
-        if (result == 1) {
-            return Msg.success().add("student", student).toString();
-        } else {
-            return Msg.fail().add("error", "添加学生基本信息出错").toString();
-        }
+        studentService.addStudent(student);
+        return "redirect:/page/addStudentPage";
     }
 
     @RequestMapping(value = "/deleteStuByID")
@@ -78,7 +73,7 @@ public class StudentController {
         List<Student> students = studentService.selectAllStu();
         List<StudentJSON> studentJSONS = new ArrayList<>();
         for (Student student : students) {
-            studentJSONS.add(StudentJSON.convertStudentToJSON(student));
+            studentJSONS.add(studentService.convertStudentToJSON(student));
         }
         return Msg.success().add("allStudents", studentJSONS).toString();
     }

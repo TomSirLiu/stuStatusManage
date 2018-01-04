@@ -13,11 +13,11 @@
     stu_class_id int(2) comment '班级编号',
     manager_id int(5) comment '管理员编号',--%>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <form class="form-horizontal" id="addStudentForm">
+            <form class="form-horizontal" id="addStudentForm" action="/stuStatusManage/addStudent">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">学号</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" placeholder="import student's ID" name="addStuID" required="required">
+                        <input type="number" class="form-control" placeholder="import student's ID" name="addStuID" id="addStuID" required="required">
                     </div>
                 </div>
                 <div class="form-group">
@@ -53,26 +53,26 @@
                     <label class="col-sm-2 control-label">状态</label>
                     <div class="col-sm-8">
                         <select class="form-control" name="addStuStatusID">
-                            <option value="在读">在读</option>
-                            <option value="已毕业">已毕业</option>
-                            <option value="留级">留级</option>
-                            <option value="休学">休学</option>
+                            <option value="1">在读</option>
+                            <option value="2">已毕业</option>
+                            <option value="3">留级</option>
+                            <option value="4">休学</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">班级编号</label>
+                    <label class="col-sm-2 control-label">班级名称</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="addStuClassID">
+                        <select class="form-control" name="addStuClassID" id="addStuClassID">
 
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">所属管理员</label>
+                    <label class="col-sm-2 control-label">所属管理员的名称</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="addStuManagerID">
-                             <option value="james">james</option>
+                        <select class="form-control" name="addStuManagerID" id="addStuManagerID">
+                             <%--<option value="james">james</option>--%>
                         </select>
                     </div>
 
@@ -90,4 +90,5 @@
 </div>
 <jsp:include page="common/final.jsp" />
 
+<script src="${pageContext.request.contextPath}/assets/js/myJS/base.js" ></script>
 <script src="${pageContext.request.contextPath}/assets/js/myJS/addStudent.js" ></script>

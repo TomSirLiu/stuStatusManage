@@ -38,15 +38,6 @@ public class Msg extends JSONObject {
      */
     @Override
     public String toString() {
-//        StringBuffer jsonString = new StringBuffer("{");
-//        jsonString.append("\"code\":\"" + code + "\",");
-//        for (Map.Entry<String, Object> entry : data.entrySet()) {
-//            jsonString.append("\"" + entry.getKey() + "\":" + "\"" + JSON.toJSON(entry.getValue()) + "\",");
-//        }
-//        jsonString.replace(jsonString.length() - 1, jsonString.length(), "}");
-//
-//        return jsonString.toString();
-
         return toJSONString(this);
     }
 }

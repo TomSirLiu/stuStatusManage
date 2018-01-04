@@ -2,8 +2,11 @@ package cn.sirLiu.service;
 
 import cn.sirLiu.dao.ManagerMapper;
 import cn.sirLiu.model.Manager;
+import cn.sirLiu.model.ManagerExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author sirLiu
@@ -17,6 +20,10 @@ public class ManagerService {
 
     public Manager selectManagerByID(Integer managerID){
         return managerMapper.selectByPrimaryKey(managerID);
+    }
+
+    public List<Manager> getAllManagers (){
+        return managerMapper.selectByExample(new ManagerExample());
     }
 
 }

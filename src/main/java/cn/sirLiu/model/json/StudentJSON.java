@@ -15,42 +15,83 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class StudentJSON {
 
-    Integer stuId;
+    private Integer stuId;
 
-    String stuName;
+    private String stuName;
 
-    Integer stuAge;
+    private Integer stuAge;
 
-    String stuSex;
+    private String stuSex;
 
-    String stuAddress;
+    private String stuAddress;
 
-    StuStatus stuStatus;
+    private StuStatus stuStatus;
 
-    Class stuClass;
+    private Class stuClass;
 
-    Manager manager;
+    private Manager manager;
 
-    @Autowired
-    private static StuStatusService stuStatusService;
-
-    @Autowired
-    private static ClassService classService;
-
-    @Autowired
-    private static ManagerService managerService;
-
-    public static StudentJSON convertStudentToJSON(Student student) {
-        StudentJSON studentJSON = new StudentJSON();
-        studentJSON.stuId = student.getStuId();
-        studentJSON.stuName = student.getStuName();
-        studentJSON.stuAge = student.getStuAge();
-        studentJSON.stuAddress = student.getStuAddress();
-        studentJSON.stuSex = student.getStuSex();
-        studentJSON.stuStatus = stuStatusService.selectStuStatusByID(student.getStuStatusId());
-        studentJSON.stuClass = classService.selectClassByID(student.getStuClassId());
-        studentJSON.manager = managerService.selectManagerByID(student.getManagerId());
-        return studentJSON;
+    public Integer getStuId() {
+        return stuId;
     }
 
+    public void setStuId(Integer stuId) {
+        this.stuId = stuId;
+    }
+
+    public String getStuName() {
+        return stuName;
+    }
+
+    public void setStuName(String stuName) {
+        this.stuName = stuName;
+    }
+
+    public Integer getStuAge() {
+        return stuAge;
+    }
+
+    public void setStuAge(Integer stuAge) {
+        this.stuAge = stuAge;
+    }
+
+    public String getStuSex() {
+        return stuSex;
+    }
+
+    public void setStuSex(String stuSex) {
+        this.stuSex = stuSex;
+    }
+
+    public String getStuAddress() {
+        return stuAddress;
+    }
+
+    public void setStuAddress(String stuAddress) {
+        this.stuAddress = stuAddress;
+    }
+
+    public StuStatus getStuStatus() {
+        return stuStatus;
+    }
+
+    public void setStuStatus(StuStatus stuStatus) {
+        this.stuStatus = stuStatus;
+    }
+
+    public Class getStuClass() {
+        return stuClass;
+    }
+
+    public void setStuClass(Class stuClass) {
+        this.stuClass = stuClass;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
 }
