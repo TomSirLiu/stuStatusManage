@@ -80,7 +80,7 @@ create table course(
   course_name varchar(10) comment '课程名称',
   course_top_limit int(5) comment '课程人数上限',
   course_type enum('选修','必修') comment '课程类型',
-  teacher_id int(5) comment '教师号',
+  teacher_id int(2) comment '教师号',
   foreign key (teacher_id) references teacher(teacher_id)
 ) charset utf8 comment '课程表';
 select * from course;
@@ -95,12 +95,13 @@ insert into course values(006,'毛泽东概论',250,'必修',005);
 create table grade(
   stu_id int(5) comment '学号',
   course_id int(5) comment '课程代码',
-  schedule_time date comment '选课时间',
+  schedule_time time comment '选课时间',
   grade int(2) comment '成绩',
   foreign key(stu_id) references student(stu_id),
   foreign key(course_id) references course(course_id),
   primary key(stu_id,course_id)
 )charset utf8 comment '选课及成绩表';
+alter table grade modify column schedule_time time comment '选课时间';
 
 
 

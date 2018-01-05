@@ -72,3 +72,4 @@
 </div>
 
 <jsp:include page="common/final.jsp"/>
+<script src="${pageContext.request.contextPath}/assets/js/myJS/base.js" ></script>

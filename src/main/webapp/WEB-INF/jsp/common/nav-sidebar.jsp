@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="col-sm-3 col-md-2 sidebar">
+<div class="col-sm-3 col-md-2 sidebar" id="authorityDiv">
     <ul class="nav nav-sidebar">
         <li class="active"><h3>学生基本情况 <span class="sr-only">(current)</span></h3></li>
         <li><a href="${pageContext.request.contextPath}/page/addStudentPage">学生录入</a></li>

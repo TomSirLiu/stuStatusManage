@@ -19,10 +19,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="javascript:;" id="hasLoginName" data-toggle="modal" data-target="#loginModal">请先登陆</a></li>
+                <li><a href="javascript:;">Settings</a></li>
+                <li><a href="javascript:;" id="exitLogin">退出登陆</a></li>
+                <li><a href="javascript:;">Help</a></li>
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">
@@ -30,4 +30,3 @@
         </div>
     </div>
 </nav>
-
