@@ -72,5 +72,6 @@
         <table tableName="manager"></table>
         <table tableName="course"></table>
         <table tableName="class"></table>
+        <table tableName="grade"></table>
     </context>
 </generatorConfiguration>
