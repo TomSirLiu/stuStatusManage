@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="common/init.jsp"/>
 <jsp:include page="common/nav.jsp"/>
-<div class="container-fluid">
-    <div class="row">
-        <jsp:include page="common/nav-sidebar.jsp"/>
+
         <%--stu_id int(5) comment '学号',
             course_id int(5) comment '课程代码',
             schedule_time date comment '选课时间',

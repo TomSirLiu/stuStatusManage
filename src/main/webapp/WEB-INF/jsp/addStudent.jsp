@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="common/init.jsp" />
 <jsp:include page="common/nav.jsp" />
-<div class="container-fluid">
-    <div class="row">
-        <jsp:include page="common/nav-sidebar.jsp" />
+
 <%--stu_id int(5) primary key comment '学号',
     stu_name varchar(10) comment '学生姓名',
     stu_age int(2) comment '学生年龄',

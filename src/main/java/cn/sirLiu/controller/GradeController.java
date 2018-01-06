@@ -2,10 +2,11 @@ package cn.sirLiu.controller;
 
 import cn.sirLiu.dao.StudentMapper;
 import cn.sirLiu.model.Grade;
+import cn.sirLiu.model.Student;
+import cn.sirLiu.model.json.GradeJson;
 import cn.sirLiu.model.json.Msg;
 import cn.sirLiu.service.CourseService;
 import cn.sirLiu.service.GradeService;
-import cn.sirLiu.service.StuStatusService;
 import cn.sirLiu.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author sirLiu
@@ -34,9 +37,9 @@ public class GradeController {
     /**
      * 录入或者修改成绩
      *
-     * @param stuID
-     * @param courseID
-     * @param grade
+     * @param stuID    学生号
+     * @param courseID 课程代码
+     * @param grade    课程成绩
      * @return
      */
     @RequestMapping(value = "/importGrade")
@@ -67,6 +70,52 @@ public class GradeController {
                     return Msg.fail().add("error", "添加课程成绩出错！！").toString();
                 }
             }
+        }
+    }
+
+    @RequestMapping(value = "/queryGradeWithStuID")
+    @ResponseBody
+    public String queryGradeWithStuID(@RequestParam(value = "stuID") Integer stuID) {
+        if (stuID != null && studentService.selectStuByID(stuID) == null) {
+            return Msg.fail().add("error", "查询不到该学生！！").toString();
+        }
+        List<Grade> grades;
+        if (stuID == null) {
+            grades = gradeService.queryAllGrade();
+        } else {
+            grades = gradeService.queryGradeWithStuID(stuID);
+        }
+        List<GradeJson> gradesJson = new ArrayList<>();
+        for (Grade grade : grades) {
+            gradesJson.add(gradeService.convertGradeToJson(grade));
+        }
+        return Msg.success().add("grades", gradesJson).toString();
+    }
+
+    @RequestMapping(value = "/queryGradeWithStuName")
+    @ResponseBody
+    public String queryGradeWithStuName(@RequestParam(value = "stuName") String stuName) {
+        Student student = studentService.selectStuByName(stuName);
+        if (stuName != null && student == null) {
+            return Msg.fail().add("error", "查询不到该学生！！").toString();
+        }
+        List<Grade> grades = gradeService.queryGradeWithStuID(student.getStuId());
+        List<GradeJson> gradesJson = new ArrayList<>();
+        for (Grade grade : grades) {
+            gradesJson.add(gradeService.convertGradeToJson(grade));
+        }
+        return Msg.success().add("grades", gradesJson).toString();
+    }
+
+    @RequestMapping(value = "/deleteGradeByKey")
+    @ResponseBody
+    public String deleteGradeByKey(@RequestParam(value = "stuID")Integer stuID,
+                                   @RequestParam(value = "courseID") Integer courseID){
+        int result = gradeService.deleteGrade(stuID,courseID);
+        if(result==1){
+            return Msg.success().toString();
+        }else {
+            return Msg.fail().add("error","删除成绩出错！！").toString();
         }
     }
 
