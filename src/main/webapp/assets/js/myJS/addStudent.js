@@ -30,14 +30,14 @@ $("#addStudentForm").submit(function(){
         }
     });
     if(existStu){
-        alert("has exist the student!!");
+        alert("该学号已存在！！");
         return false;
     }
 
-    if(window.confirm("would u like to add this new student?")){
+    if(window.confirm("确定要添加该学生吗？？")){
         //点击确定的操作
         // $("#addStudentForm").submit();
-        alert("add success!!");
+        alert("添加成功！！");
     }else{
         //点击取消的操作
         //return false 阻止表单提交

@@ -48,12 +48,12 @@ public class StudentController {
 
     @RequestMapping(value = "/alterStudent")
     public String alterStudent(@RequestParam("alterStuID") Integer stuId,
-                             @RequestParam("alterStuName") String stuName,
-                             @RequestParam("alterStuAge") Integer stuAge,
-                             @RequestParam("alterStuSex") String stuSex,
-                             @RequestParam("alterStuAddress") String stuAddress,
-                             @RequestParam("alterStuClassID") Integer stuClassID,
-                             @RequestParam("alterStuManagerID") Integer stuManagerID) {
+                               @RequestParam("alterStuName") String stuName,
+                               @RequestParam("alterStuAge") Integer stuAge,
+                               @RequestParam("alterStuSex") String stuSex,
+                               @RequestParam("alterStuAddress") String stuAddress,
+                               @RequestParam("alterStuClassID") Integer stuClassID,
+                               @RequestParam("alterStuManagerID") Integer stuManagerID) {
         Student student = studentService.selectStuByID(stuId);
         student.setStuId(stuId);
         student.setStuName(stuName);
@@ -68,7 +68,7 @@ public class StudentController {
 
     @RequestMapping(value = "/deleteStuByID")
     @ResponseBody
-    public String deleteStuByID(@RequestParam(value = "selectStuID") Integer stuID) {
+    public String deleteStuByID(@RequestParam(value = "deleteStuID") Integer stuID) {
         int result = studentService.deleteStuByID(stuID);
         if (result == 1) {
             return Msg.success().toString();
@@ -88,38 +88,57 @@ public class StudentController {
         }
     }
 
-    @RequestMapping(value = "/selectStuByCondition")
+    @RequestMapping(value = "/selectStuByName")
     @ResponseBody
-    public String selectStuByCondition(@RequestParam(value = "selectStuID",required = false)Integer stuID,
-                                       @RequestParam(value = "selectStuName",required = false)String stuName,
-                                       @RequestParam(value = "selectStuSex",required = false)String stuSex){
-        CopyOnWriteArrayList<Student> students = (CopyOnWriteArrayList<Student>) studentService.selectAllStu();
-        if(stuID!=null){
-            for (Student student: students){
-                if(!student.getStuId().equals(stuID)){
-                    students.remove(student);
-                }
-            }
+    public String selectStuByName(@RequestParam(value = "selectStuName") String stuName) {
+        StudentJson student = studentService.convertStudentToJSON(studentService.selectStuByName(stuName));
+        if (student != null) {
+            return Msg.success().add("student", student).toString();
+        } else {
+            return Msg.fail().add("error", "找不到符合该姓名的学生").toString();
         }
-        if(stuName!=null){
-            for (Student student: students){
-                if(!student.getStuName().equals(stuName)){
-                    students.remove(student);
-                }
-            }
-        }
-        if(stuSex!=null){
-            for (Student student: students){
-                if(!student.getStuSex().equals(stuSex)){
-                    students.remove(student);
-                }
-            }
-        }
-        List<StudentJson> studentsJson = new ArrayList<>();
-        for (Student student : students) {
+    }
+
+    @RequestMapping(value = "/queryStuByCondition")
+    @ResponseBody
+    public String queryStuByCondition(@RequestParam(value = "queryStuID", required = false) Integer stuID,
+                                      @RequestParam(value = "queryStuName", required = false) String stuName,
+                                      @RequestParam(value = "queryStuAge", required = false) Integer stuAge,
+                                      @RequestParam(value = "queryStuSex", required = false) String stuSex) {
+        List<Student> studentsTemp = studentService.selectAllStu();
+        List<StudentJson> studentsJson = new CopyOnWriteArrayList<>();
+        for (Student student : studentsTemp) {
             studentsJson.add(studentService.convertStudentToJSON(student));
         }
-        return Msg.success().add("selectedStudents", studentsJson).toString();
+        if (stuID != null) {
+            for (StudentJson json : studentsJson) {
+                if (!json.getStuId().equals(stuID)) {
+                    studentsJson.remove(json);
+                }
+            }
+        }
+        if (stuName != null && !stuName.equals("")) {
+            for (StudentJson json : studentsJson) {
+                if (!json.getStuName().equals(stuName)) {
+                    studentsJson.remove(json);
+                }
+            }
+        }
+        if (stuAge != null) {
+            for (StudentJson json : studentsJson) {
+                if (!json.getStuAge().equals(stuAge)) {
+                    studentsJson.remove(json);
+                }
+            }
+        }
+        if (stuSex != null && !stuSex.equals("") && !stuSex.equals("all")) {
+            for (StudentJson json : studentsJson) {
+                if (!json.getStuSex().equals(stuSex)) {
+                    studentsJson.remove(json);
+                }
+            }
+        }
+        return Msg.success().add("queryStudents", studentsJson).toString();
     }
 
     @RequestMapping(value = "/selectAllStu")

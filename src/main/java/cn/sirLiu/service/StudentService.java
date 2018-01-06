@@ -39,6 +39,12 @@ public class StudentService {
         return studentMapper.selectByPrimaryKey(stuID);
     }
 
+    public Student selectStuByName(String stuName) {
+        StudentExample studentExample = new StudentExample();
+        studentExample.createCriteria().andStuNameEqualTo(stuName);
+        return studentMapper.selectByExample(studentExample).get(0);
+    }
+
     public int deleteStuByID(Integer stuID) {
         return studentMapper.deleteByPrimaryKey(stuID);
     }
@@ -47,7 +53,7 @@ public class StudentService {
         return studentMapper.selectByExample(new StudentExample());
     }
 
-    public int updateStu(Student student){
+    public int updateStu(Student student) {
         return studentMapper.updateByPrimaryKey(student);
     }
 

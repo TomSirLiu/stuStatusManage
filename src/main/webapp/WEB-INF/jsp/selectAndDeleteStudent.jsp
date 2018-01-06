@@ -11,21 +11,22 @@
                 <div class="col-lg-8"><!-- /.col-lg-8 -->
                     <form class="form-inline">
                         <div class="form-group col-md-4">
-                            <label class="col-sm-2 control-label">学号</label>
+                            <label class="col-sm-2 control-label" for="queryStuName">姓名</label>
                             <div class="col-sm-3">
-                                <input type="number" class="form-control"  placeholder="import student's ID">
+                                <input type="text" class="form-control"  placeholder="import student's name" id="queryStuName">
                             </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label class="col-sm-offset-1 col-sm-2 control-label">姓名</label>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control" placeholder="import student's name">
+                            <label class="col-sm-offset-1 col-sm-2 control-label" for="queryStuAge">年龄</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" placeholder="import student's age" id="queryStuAge">
                             </div>
                         </div>
                         <div class="form-group  col-md-4">
-                            <label class="col-sm-offset-2 col-sm-2 control-label">性别</label>
+                            <label class="col-sm-offset-2 col-sm-2 control-label" for="queryStuSex">性别</label>
                             <div class="col-sm-3">
-                                <select class="form-control">
+                                <select class="form-control" id="queryStuSex">
+                                    <option value="all">----</option>
                                     <option value="男">男</option>
                                     <option value="女">女</option>
                                 </select>
@@ -35,10 +36,10 @@
                 </div><!-- /.col-lg-8 -->
                 <div class="col-lg-4">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for student.">
+                        <input type="text" class="form-control" placeholder="Directly query with student's ID" id="queryStuID">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">查询学生</button>
-                          </span>
+                            <button class="btn btn-default" type="button" onclick="queryStu()">查询学生</button>
+                        </span>
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
@@ -61,36 +62,15 @@
                         <th>删除</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                        <td>sit</td>
-                        <td>sit</td>
-                        <td>sit</td>
-                        <td><button class="btn btn-primary">删除</button></td>
-                    </tr>
-                    <tr>
-                        <td>1,002</td>
-                        <td>amet</td>
-                        <td>consectetur</td>
-                        <td>adipiscing</td>
-                        <td>elit</td>
-                        <td>elit</td>
-                        <td>elit</td>
-                        <td>elit</td>
-                        <td><button class="btn btn-primary">删除</button></td>
-                    </tr>
+                    <tbody id="queryStudents">
+
                     </tbody>
                 </table>
             </div>
             <nav aria-label="...">
                 <ul class="pager">
-                    <li><a href="#">Previous</a></li>
-                    <li><a href="#">Next</a></li>
+                    <li><a href="javascript:;" onclick="previousPage()">Previous</a></li>
+                    <li><a href="javascript:;" onclick="nextPage()">Next</a></li>
                 </ul>
             </nav>
         </div>
@@ -100,3 +80,4 @@
 
 <jsp:include page="common/final.jsp"/>
 <script src="${pageContext.request.contextPath}/assets/js/myJS/base.js" ></script>
+<script src="${pageContext.request.contextPath}/assets/js/myJS/selectAndDeleteStudent.js" ></script>
