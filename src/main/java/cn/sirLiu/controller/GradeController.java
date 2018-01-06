@@ -31,6 +31,14 @@ public class GradeController {
     @Autowired
     private CourseService courseService;
 
+    /**
+     * 录入或者修改成绩
+     *
+     * @param stuID
+     * @param courseID
+     * @param grade
+     * @return
+     */
     @RequestMapping(value = "/importGrade")
     @ResponseBody
     public String importGrade(@RequestParam(value = "stuID") Integer stuID,
@@ -41,12 +49,23 @@ public class GradeController {
         } else if (courseService.selectCourseByID(courseID) == null) {
             return Msg.fail().add("error", "不存在该课程代码的课程").toString();
         } else {
-            Grade gradeModel = new Grade(stuID, courseID, new Date(), grade);
-            int result = gradeService.importGrade(gradeModel);
-            if (result == 1) {
-                return Msg.success().toString();
+            Grade existGradeModel = gradeService.selectGradeByStuIDAndCourseID(stuID, courseID);
+            if (existGradeModel != null) {
+                existGradeModel.setGrade(grade);
+                int result = gradeService.updateGrade(existGradeModel);
+                if (result == 1) {
+                    return Msg.success().add("successInfo", "修改课程成绩成功！！").toString();
+                } else {
+                    return Msg.fail().add("error", "修改课程成绩出错！！").toString();
+                }
             } else {
-                return Msg.fail().add("error", "添加课程成绩出错！！").toString();
+                Grade gradeModel = new Grade(stuID, courseID, new Date(), grade);
+                int result = gradeService.importGrade(gradeModel);
+                if (result == 1) {
+                    return Msg.success().add("successInfo", "添加课程成绩成功！！").toString();
+                } else {
+                    return Msg.fail().add("error", "添加课程成绩出错！！").toString();
+                }
             }
         }
     }
