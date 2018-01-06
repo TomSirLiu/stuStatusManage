@@ -2,7 +2,6 @@ package cn.sirLiu.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class GradeExample {
@@ -104,32 +103,6 @@ public class GradeExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                timeList.add(new java.sql.Time(iter.next().getTime()));
-            }
-            addCriterion(condition, timeList, property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
         }
 
         public Criteria andStuIdIsNull() {
@@ -263,52 +236,52 @@ public class GradeExample {
         }
 
         public Criteria andScheduleTimeEqualTo(Date value) {
-            addCriterionForJDBCTime("schedule_time =", value, "scheduleTime");
+            addCriterion("schedule_time =", value, "scheduleTime");
             return (Criteria) this;
         }
 
         public Criteria andScheduleTimeNotEqualTo(Date value) {
-            addCriterionForJDBCTime("schedule_time <>", value, "scheduleTime");
+            addCriterion("schedule_time <>", value, "scheduleTime");
             return (Criteria) this;
         }
 
         public Criteria andScheduleTimeGreaterThan(Date value) {
-            addCriterionForJDBCTime("schedule_time >", value, "scheduleTime");
+            addCriterion("schedule_time >", value, "scheduleTime");
             return (Criteria) this;
         }
 
         public Criteria andScheduleTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("schedule_time >=", value, "scheduleTime");
+            addCriterion("schedule_time >=", value, "scheduleTime");
             return (Criteria) this;
         }
 
         public Criteria andScheduleTimeLessThan(Date value) {
-            addCriterionForJDBCTime("schedule_time <", value, "scheduleTime");
+            addCriterion("schedule_time <", value, "scheduleTime");
             return (Criteria) this;
         }
 
         public Criteria andScheduleTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("schedule_time <=", value, "scheduleTime");
+            addCriterion("schedule_time <=", value, "scheduleTime");
             return (Criteria) this;
         }
 
         public Criteria andScheduleTimeIn(List<Date> values) {
-            addCriterionForJDBCTime("schedule_time in", values, "scheduleTime");
+            addCriterion("schedule_time in", values, "scheduleTime");
             return (Criteria) this;
         }
 
         public Criteria andScheduleTimeNotIn(List<Date> values) {
-            addCriterionForJDBCTime("schedule_time not in", values, "scheduleTime");
+            addCriterion("schedule_time not in", values, "scheduleTime");
             return (Criteria) this;
         }
 
         public Criteria andScheduleTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("schedule_time between", value1, value2, "scheduleTime");
+            addCriterion("schedule_time between", value1, value2, "scheduleTime");
             return (Criteria) this;
         }
 
         public Criteria andScheduleTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("schedule_time not between", value1, value2, "scheduleTime");
+            addCriterion("schedule_time not between", value1, value2, "scheduleTime");
             return (Criteria) this;
         }
 

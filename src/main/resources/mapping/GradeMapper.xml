@@ -5,7 +5,7 @@
     <constructor >
       <idArg column="stu_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <idArg column="course_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="schedule_time" jdbcType="TIME" javaType="java.util.Date" />
+      <arg column="schedule_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="grade" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
@@ -105,7 +105,7 @@
   <insert id="insert" parameterType="cn.sirLiu.model.Grade" >
     insert into grade (stu_id, course_id, schedule_time, 
       grade)
-    values (#{stuId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{scheduleTime,jdbcType=TIME}, 
+    values (#{stuId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{scheduleTime,jdbcType=TIMESTAMP}, 
       #{grade,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.sirLiu.model.Grade" >
@@ -132,7 +132,7 @@
         #{courseId,jdbcType=INTEGER},
       </if>
       <if test="scheduleTime != null" >
-        #{scheduleTime,jdbcType=TIME},
+        #{scheduleTime,jdbcType=TIMESTAMP},
       </if>
       <if test="grade != null" >
         #{grade,jdbcType=INTEGER},
@@ -155,7 +155,7 @@
         course_id = #{record.courseId,jdbcType=INTEGER},
       </if>
       <if test="record.scheduleTime != null" >
-        schedule_time = #{record.scheduleTime,jdbcType=TIME},
+        schedule_time = #{record.scheduleTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.grade != null" >
         grade = #{record.grade,jdbcType=INTEGER},
@@ -169,7 +169,7 @@
     update grade
     set stu_id = #{record.stuId,jdbcType=INTEGER},
       course_id = #{record.courseId,jdbcType=INTEGER},
-      schedule_time = #{record.scheduleTime,jdbcType=TIME},
+      schedule_time = #{record.scheduleTime,jdbcType=TIMESTAMP},
       grade = #{record.grade,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -179,7 +179,7 @@
     update grade
     <set >
       <if test="scheduleTime != null" >
-        schedule_time = #{scheduleTime,jdbcType=TIME},
+        schedule_time = #{scheduleTime,jdbcType=TIMESTAMP},
       </if>
       <if test="grade != null" >
         grade = #{grade,jdbcType=INTEGER},
@@ -190,7 +190,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.sirLiu.model.Grade" >
     update grade
-    set schedule_time = #{scheduleTime,jdbcType=TIME},
+    set schedule_time = #{scheduleTime,jdbcType=TIMESTAMP},
       grade = #{grade,jdbcType=INTEGER}
     where stu_id = #{stuId,jdbcType=INTEGER}
       and course_id = #{courseId,jdbcType=INTEGER}

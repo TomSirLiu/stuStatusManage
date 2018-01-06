@@ -22,5 +22,8 @@ public class CourseService {
         return courseMapper.selectByExample(new CourseExample());
     }
 
+    public Course selectCourseByID(Integer courseID){
+        return courseMapper.selectByPrimaryKey(courseID);
+    }
 
 }

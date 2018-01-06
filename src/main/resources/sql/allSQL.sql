@@ -95,13 +95,14 @@ insert into course values(006,'毛泽东概论',250,'必修',005);
 create table grade(
   stu_id int(5) comment '学号',
   course_id int(5) comment '课程代码',
-  schedule_time time comment '选课时间',
+  schedule_time DATETIME comment '选课时间',
   grade int(2) comment '成绩',
   foreign key(stu_id) references student(stu_id),
   foreign key(course_id) references course(course_id),
   primary key(stu_id,course_id)
 )charset utf8 comment '选课及成绩表';
-alter table grade modify column schedule_time time comment '选课时间';
+SELECT * FROM grade;
+alter table grade modify column schedule_time DATETIME comment '选课时间';
 
 
 
