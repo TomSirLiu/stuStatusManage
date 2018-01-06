@@ -52,7 +52,6 @@ public class StudentController {
                              @RequestParam("alterStuAge") Integer stuAge,
                              @RequestParam("alterStuSex") String stuSex,
                              @RequestParam("alterStuAddress") String stuAddress,
-                             @RequestParam("alterStuStatusID") Integer stuStatusID,
                              @RequestParam("alterStuClassID") Integer stuClassID,
                              @RequestParam("alterStuManagerID") Integer stuManagerID) {
         Student student = studentService.selectStuByID(stuId);
@@ -61,7 +60,6 @@ public class StudentController {
         student.setStuAge(stuAge);
         student.setStuSex(stuSex);
         student.setStuAddress(stuAddress);
-        student.setStuStatusId(stuStatusID);
         student.setStuClassId(stuClassID);
         student.setManagerId(stuManagerID);
         studentService.updateStu(student);

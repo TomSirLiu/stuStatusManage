@@ -6,11 +6,11 @@
         <jsp:include page="common/nav-sidebar.jsp"/>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <form class="form-horizontal" id="alterStudentForm" action="/stuStatusManage/alter">
+            <form class="form-horizontal" id="alterStudentForm" action="/stuStatusManage/alterStudent">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">学号</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" id="alterStuId" required="required">
+                        <input type="number" class="form-control" id="alterStuId" name="alterStuID" required="required">
                     </div>
                 </div>
                 <div class="form-group">
@@ -28,7 +28,12 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">性别</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="alterStuSex" required="required">
+                        <label class="radio-inline">
+                            <input type="radio" name="alterStuSex" value="男" required="required"> 男
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="alterStuSex" value="女" required="required"> 女
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
