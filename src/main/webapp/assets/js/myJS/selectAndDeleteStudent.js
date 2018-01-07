@@ -53,6 +53,9 @@ function queryStu() {
 }
 
 function previousPage() {
+    if (queryStudents === undefined) {
+        return false;
+    }
     if (currentPage > 1) {
         currentPage--;
     }
@@ -60,6 +63,9 @@ function previousPage() {
 }
 
 function nextPage() {
+    if (queryStudents === undefined) {
+        return false;
+    }
     if (currentPage * pageSize < queryStudents.length) {
         currentPage++;
     }

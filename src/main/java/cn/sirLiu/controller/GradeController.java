@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author sirLiu
@@ -109,14 +110,42 @@ public class GradeController {
 
     @RequestMapping(value = "/deleteGradeByKey")
     @ResponseBody
-    public String deleteGradeByKey(@RequestParam(value = "stuID")Integer stuID,
-                                   @RequestParam(value = "courseID") Integer courseID){
-        int result = gradeService.deleteGrade(stuID,courseID);
-        if(result==1){
+    public String deleteGradeByKey(@RequestParam(value = "stuID") Integer stuID,
+                                   @RequestParam(value = "courseID") Integer courseID) {
+        int result = gradeService.deleteGrade(stuID, courseID);
+        if (result == 1) {
             return Msg.success().toString();
-        }else {
-            return Msg.fail().add("error","删除成绩出错！！").toString();
+        } else {
+            return Msg.fail().add("error", "删除成绩出错！！").toString();
         }
+    }
+
+    @RequestMapping(value = "/higherGradeFirst")
+    @ResponseBody
+    public String higherGradeFirst() {
+        List<Map<String, Object>> grades = gradeService.higherGradeFirst();
+        return Msg.success().add("grades", grades).toString();
+    }
+
+    @RequestMapping(value = "/groupByCourseID")
+    @ResponseBody
+    public String groupByCourseID(@RequestParam(value = "statisticsConditionId") Integer courseID) {
+        List<Map<String, Object>> grades = gradeService.groupByCourseID(courseID);
+        return Msg.success().add("grades", grades).toString();
+    }
+
+    @RequestMapping(value = "/groupByStudentID")
+    @ResponseBody
+    public String groupByStudentID(@RequestParam(value = "statisticsConditionId") Integer stuID) {
+        List<Map<String, Object>> grades = gradeService.groupByStudentID(stuID);
+        return Msg.success().add("grades", grades).toString();
+    }
+
+    @RequestMapping(value = "/groupBySumGrade")
+    @ResponseBody
+    public String groupBySumGrade() {
+        List<Map<String, Object>> grades = gradeService.selectSumGradeByGroupStuID();
+        return Msg.success().add("grades", grades).toString();
     }
 
 }

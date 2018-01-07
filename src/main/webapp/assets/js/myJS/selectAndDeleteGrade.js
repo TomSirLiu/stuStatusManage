@@ -57,28 +57,34 @@ function showQueryGrades() {
             '<td>' + queryGrades[i].stuClass.className + '</td>' +
             '<td>' + queryGrades[i].course.courseName + '</td>' +
             '<td>' + queryGrades[i].grade + '</td>' +
-            '<td><button class="btn btn-primary" onclick="deleteGrade('+queryGrades[i].student.stuId+','+queryGrades[i].course.courseId+')">删除</button></td>' +
+            '<td><button class="btn btn-primary" onclick="deleteGrade(' + queryGrades[i].student.stuId + ',' + queryGrades[i].course.courseId + ')">删除</button></td>' +
             '</tr>');
     }
 }
 
 function previousPage() {
+    if (queryGrades === undefined) {
+        return false;
+    }
     if (currentPage > 1) {
         currentPage--;
     }
-    showQueryStudents();
+    showQueryGrades();
 }
 
 function nextPage() {
-    if (currentPage * pageSize < queryStudents.length) {
+    if (queryGrades === undefined) {
+        return false;
+    }
+    if (currentPage * pageSize < queryGrades.length) {
         currentPage++;
     }
-    showQueryStudents();
+    showQueryGrades();
 }
 
-function deleteGrade(stuID,courseID) {
+function deleteGrade(stuID, courseID) {
     var hasLoginType = window.sessionStorage.getItem("hasLoginType");
-    if(hasLoginType !== "manager"){
+    if (hasLoginType !== "manager") {
         alert("您不是管理员，无权删除！");
         return false;
     }
@@ -86,8 +92,8 @@ function deleteGrade(stuID,courseID) {
         $.post({
             url: "/stuStatusManage/deleteGradeByKey",
             data: {
-                stuID:stuID,
-                courseID:courseID
+                stuID: stuID,
+                courseID: courseID
             },
             success: function (data) {
                 var info = JSON.parse(data);

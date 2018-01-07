@@ -3,6 +3,8 @@ package cn.sirLiu.model.json;
 import cn.sirLiu.model.Class;
 import cn.sirLiu.model.Course;
 import cn.sirLiu.model.Student;
+import cn.sirLiu.model.Teacher;
+import org.junit.Test;
 
 import java.util.Date;
 
@@ -21,6 +23,16 @@ public class GradeJson {
     private Student student;
 
     private Class stuClass;
+
+    private Teacher teacher;
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 
     public Class getStuClass() {
         return stuClass;

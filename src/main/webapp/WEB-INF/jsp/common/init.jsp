@@ -103,5 +103,48 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
+<!-- teacher modal -->
+<div class="modal fade" id="teacherModal">
+    <div class="modal-dialog" style="width:588px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">教师信息</h3>
+            </div>
+            <br>
+            <form class="form-horizontal">
+                <input type="hidden" name="operate" value="update"/>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size:17px">教师号</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="teacherID">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size:17px">教师姓名</label>
+                    <div class=" col-sm-8">
+                        <input type="text" class="form-control" id="teacherName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size:17px">教师等级</label>
+                    <div class="col-sm-8 ">
+                        <input type="number" class="form-control" id="teacherLevel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size:17px">教师类型</label>
+                    <div class="col-sm-8 ">
+                        <input type="text" class="form-control" id="teacherType">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size:17px">教师入职时间</label>
+                    <div class="col-sm-8 ">
+                        <input type="text" class="form-control" id="teacherEntryTime">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
