@@ -19,6 +19,9 @@ $(function () {
                 var info = JSON.parse(data);
                 if (info.code === "SUCCESS") {
                     queryGrades = info.grades;
+                    if (queryGrades.length < (currentPage - 1) * pageSize) {
+                        currentPage--;
+                    }
                     showQueryGrades();
                 } else if (info.code === "FAIL") {
                     window.alert(info.error);
@@ -39,6 +42,9 @@ function queryGrade() {
             var info = JSON.parse(data);
             if (info.code === "SUCCESS") {
                 queryGrades = info.grades;
+                if (queryGrades.length < (currentPage - 1) * pageSize) {
+                    currentPage--;
+                }
                 showQueryGrades();
             } else if (info.code === "FAIL") {
                 window.alert(info.error);
@@ -99,6 +105,9 @@ function deleteGrade(stuID, courseID) {
                 var info = JSON.parse(data);
                 if (info.code === "SUCCESS") {
                     alert("删除成绩成功！");
+                    if (queryGrades.length < (currentPage - 1) * pageSize) {
+                        currentPage--;
+                    }
                     queryGrade();
                 } else if (info.code === "FAIL") {
                     alert("删除成绩出错！");

@@ -12,12 +12,12 @@ function queryStu() {
     var queryStuSex = $("#queryStuSex").val();
     var queryStuID = $("#queryStuID").val();
     var hasLoginType = window.sessionStorage.getItem("hasLoginType");
-    if(hasLoginType === "student"){
+    if (hasLoginType === "student") {
         $.get({
             url: "/stuStatusManage/selectStuByName",
             async: false,
             data: {
-                selectStuName:window.sessionStorage.getItem("hasLoginName")
+                selectStuName: window.sessionStorage.getItem("hasLoginName")
             },
             success: function (data) {
                 var currentStudent = JSON.parse(data).student;
@@ -34,7 +34,7 @@ function queryStu() {
                     '</tr>');
             }
         });
-    }else{
+    } else {
         $.post({
             url: "/stuStatusManage/queryStuByCondition",
             async: false,
@@ -46,6 +46,9 @@ function queryStu() {
             },
             success: function (data) {
                 queryStudents = JSON.parse(data).queryStudents;
+                if (queryStudents.length < (currentPage - 1) * pageSize) {
+                    currentPage--;
+                }
                 showQueryStudents();
             }
         })
@@ -92,7 +95,7 @@ function showQueryStudents() {
 
 function deleteStu(stuID) {
     var hasLoginType = window.sessionStorage.getItem("hasLoginType");
-    if(hasLoginType !== "manager"){
+    if (hasLoginType !== "manager") {
         alert("您不是管理员，无权删除！");
         return false;
     }
@@ -104,6 +107,9 @@ function deleteStu(stuID) {
                 var info = JSON.parse(data);
                 if (info.code === "SUCCESS") {
                     alert("删除学生信息成功！");
+                    if (queryStudents.length < (currentPage - 1) * pageSize) {
+                        currentPage--;
+                    }
                     queryStu();
                 } else if (info.code === "FAIL") {
                     alert("删除学生信息出错！");
