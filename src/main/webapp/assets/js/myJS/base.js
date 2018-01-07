@@ -46,40 +46,40 @@ $(function () {
         var hasLoginType = window.sessionStorage.getItem("hasLoginType");
         if (hasLoginType === "teacher") {
             $("#authorityDiv").html('<ul class="nav nav-sidebar">\n' +
-                '        <li class="active"><h3>学生成绩 <span class="sr-only">(current)</span></h3></li>\n' +
-                '        <li><a href="/stuStatusManage/page/importGradePage">成绩录入/修改</a></li>\n' +
-                '        <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">成绩查询/删除</a></li>\n' +
+                '        <li class="active"><h3>&nbsp; 学生成绩 <span class="sr-only">(current)</span></h3></li>\n' +
+                '        <li><a href="/stuStatusManage/page/importGradePage">&nbsp; 成绩录入/修改</a></li>\n' +
+                '        <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; 成绩查询/删除</a></li>\n' +
                 '    </ul>');
         } else if (hasLoginType === "student") {
             $("#authorityDiv").html('<ul class="nav nav-sidebar">\n' +
-                '        <li class="active"><h3>学生基本情况 <span class="sr-only">(current)</span></h3></li>\n' +
-                '        <li><a href="/stuStatusManage/page/selectAndDeleteStudentPage">学生基本信息查询</a></li>\n' +
+                '        <li class="active"><h3>&nbsp; 学生基本情况 <span class="sr-only">(current)</span></h3></li>\n' +
+                '        <li><a href="/stuStatusManage/page/selectAndDeleteStudentPage">&nbsp; 学生基本信息查询</a></li>\n' +
                 '    </ul>\n' +
                 '    <ul class="nav nav-sidebar">\n' +
-                '        <li class="active"><h3>学生成绩 <span class="sr-only">(current)</span></h3></li>\n' +
-                '        <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">成绩查询</a></li>\n' +
-                '        <li><a href="/stuStatusManage/page/gradeStatisticsAndRankingPage">成绩统计及排名</a></li>\n' +
+                '        <li class="active"><h3>&nbsp; 学生成绩 <span class="sr-only">(current)</span></h3></li>\n' +
+                '        <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; 成绩查询</a></li>\n' +
+                '        <li><a href="/stuStatusManage/page/gradeStatisticsAndRankingPage">&nbsp; 成绩统计及排名</a></li>\n' +
                 '    </ul>');
         } else if (hasLoginType === "manager") {
             $("#authorityDiv").html('<ul class="nav nav-sidebar">' +
-                '<li class="active"><h3>学生基本情况 <span class="sr-only">(current)</span></h3></li>' +
-                '   <li><a href="/stuStatusManage/page/addStudentPage">学生录入</a></li>' +
-                '   <li><a href="/stuStatusManage/page/alterStudentPage">学生基本信息修改</a></li>' +
-                '   <li><a href="/stuStatusManage/page/selectAndDeleteStudentPage">学生基本信息查询/删除</a></li>' +
+                '<li class="active"><h3>&nbsp; 学生基本情况 <span class="sr-only">(current)</span></h3></li>' +
+                '   <li><a href="/stuStatusManage/page/addStudentPage">&nbsp; 学生录入</a></li>' +
+                '   <li><a href="/stuStatusManage/page/alterStudentPage">&nbsp; 学生基本信息修改</a></li>' +
+                '   <li><a href="/stuStatusManage/page/selectAndDeleteStudentPage">&nbsp; 学生基本信息查询/删除</a></li>' +
                 '   </ul>' +
                 '   <ul class="nav nav-sidebar">' +
-                '   <li class="active"><h3>学生成绩 <span class="sr-only">(current)</span></h3></li>' +
-                '   <li><a href="/stuStatusManage/page/importGradePage">成绩录入/修改</a></li>' +
-                '   <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">成绩查询/删除</a></li>' +
-                '   <li><a href="/stuStatusManage/page/gradeStatisticsAndRankingPage">成绩统计及排名</a></li>' +
+                '   <li class="active"><h3>&nbsp; 学生成绩 <span class="sr-only">(current)</span></h3></li>' +
+                '   <li><a href="/stuStatusManage/page/importGradePage">&nbsp; 成绩录入/修改</a></li>' +
+                '   <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; 成绩查询/删除</a></li>' +
+                '   <li><a href="/stuStatusManage/page/gradeStatisticsAndRankingPage">&nbsp; 成绩统计及排名</a></li>' +
                 '   </ul>' +
                 '   <ul class="nav nav-sidebar">' +
-                '   <li class="active"><h3>班级管理 <span class="sr-only">(current)</span></h3></li>' +
-                '   <li><a href="/stuStatusManage/page/chooseCourseWithClassPage">班级选课</a></li>' +
+                '   <li class="active"><h3>&nbsp; 班级管理 <span class="sr-only">(current)</span></h3></li>' +
+                '   <li><a href="/stuStatusManage/page/chooseCourseWithClassPage">&nbsp; 班级选课</a></li>' +
                 '   </ul>' +
                 '   <ul class="nav nav-sidebar">' +
-                '   <li class="active"><h3>特殊情况 <span class="sr-only">(current)</span></h3></li>' +
-                '   <li><a href="/stuStatusManage/page/alterStuStatusPage">学籍状态</a></li>' +
+                '   <li class="active"><h3>&nbsp; 特殊情况 <span class="sr-only">(current)</span></h3></li>' +
+                '   <li><a href="/stuStatusManage/page/alterStuStatusPage">&nbsp;学籍状态</a></li>' +
                 '   </ul>');
         }
     }
@@ -111,7 +111,7 @@ function login() {
                 $("#confirmHint").bind("click", function () {
                     window.location.reload();
                 });
-                $("#hintModal p").html("&nbsp;&nbsp;&nbsp;恭喜，&nbsp;<b>" + loginName + "</b>&nbsp;!用户登陆成功！将为您自动登陆!");
+                $("#hintModal p").html("&nbsp&nbsp&nbsp;恭喜，&nbsp;<b>" + loginName + "</b>&nbsp;!用户登陆成功！将为您自动登陆!");
                 $('#hintModal').modal({
                     keyboard: false
                 });

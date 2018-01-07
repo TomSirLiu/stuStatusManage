@@ -12,7 +12,7 @@
                         </span>
                         <input type="number" class="form-control" placeholder="Search for student's ID." id="stuIDForQueryGrade">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" onclick="queryGrade()" id="queryGradeButton">Go!</button>
+                            <button class="btn btn-info" type="button" onclick="queryGrade()" id="queryGradeButton">查询成绩</button>
                         </span>
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-7 -->

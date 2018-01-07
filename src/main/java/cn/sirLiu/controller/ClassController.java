@@ -17,7 +17,7 @@ public class ClassController {
     @Autowired
     private ClassService classService;
 
-    @RequestMapping(value = "getAllClasses")
+    @RequestMapping(value = "/getAllClasses")
     @ResponseBody
     public String getAllClasses(){
         return Msg.success().add("classes",classService.getAllClasses()).toString();

@@ -10,6 +10,7 @@ import cn.sirLiu.model.json.StudentJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 /**
@@ -55,6 +56,12 @@ public class StudentService {
 
     public int updateStu(Student student) {
         return studentMapper.updateByPrimaryKey(student);
+    }
+
+    public List<Student> selectStudentsByClassID(Integer classID) {
+        StudentExample studentExample = new StudentExample();
+        studentExample.createCriteria().andStuClassIdEqualTo(classID);
+        return studentMapper.selectByExample(studentExample);
     }
 
     public StudentJson convertStudentToJSON(Student student) {

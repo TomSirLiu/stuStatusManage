@@ -56,6 +56,9 @@ function queryGrade() {
 function showQueryGrades() {
     $("#queryGrade").html("");
     for (var i = (currentPage - 1) * pageSize; i < queryGrades.length && i < currentPage * pageSize; i++) {
+        if (queryGrades[i].grade === undefined) {
+            queryGrades[i].grade = "无";
+        }
         $("#queryGrade").append('<tr>' +
             '<td>' + queryGrades[i].student.stuId + '</td>' +
             '<td>' + queryGrades[i].student.stuName + '</td>' +
@@ -63,7 +66,7 @@ function showQueryGrades() {
             '<td>' + queryGrades[i].stuClass.className + '</td>' +
             '<td>' + queryGrades[i].course.courseName + '</td>' +
             '<td>' + queryGrades[i].grade + '</td>' +
-            '<td><button class="btn btn-primary" onclick="deleteGrade(' + queryGrades[i].student.stuId + ',' + queryGrades[i].course.courseId + ')">删除</button></td>' +
+            '<td><button class="btn btn-danger" onclick="deleteGrade(' + queryGrades[i].student.stuId + ',' + queryGrades[i].course.courseId + ')">删除</button></td>' +
             '</tr>');
     }
 }

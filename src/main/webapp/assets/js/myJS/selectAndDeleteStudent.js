@@ -87,7 +87,7 @@ function showQueryStudents() {
             '<td>' + queryStudents[i].stuStatus.stuStatusName + '</td>' +
             '<td>' + queryStudents[i].stuClass.className + '</td>' +
             '<td>' + queryStudents[i].manager.managerName + '</td>' +
-            '<td><button class="btn btn-primary" onclick="deleteStu(' + queryStudents[i].stuId + ')">删除</button></td>' +
+            '<td><button class="btn btn-danger" onclick="deleteStu(' + queryStudents[i].stuId + ')">删除</button></td>' +
             '</tr>';
         $("#queryStudents").append(content);
     }

@@ -75,6 +75,10 @@ public class GradeService {
         return gradeMapper.selectGradeJson(stuID, null);
     }
 
+    public Grade selectByGradeKey(Integer stuID, Integer courseID) {
+        return gradeMapper.selectByPrimaryKey(new GradeKey(stuID, courseID));
+    }
+
     public GradeJson convertGradeToJson(Grade grade) {
         GradeJson gradeJson = new GradeJson();
         gradeJson.setGrade(grade.getGrade());
