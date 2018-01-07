@@ -116,32 +116,35 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size:17px">教师号</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" id="teacherID">
+                        <input type="number" class="form-control" id="teacherID" disabled="disabled">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size:17px">教师姓名</label>
                     <div class=" col-sm-8">
-                        <input type="text" class="form-control" id="teacherName">
+                        <input type="text" class="form-control" id="teacherName" disabled="disabled">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size:17px">教师等级</label>
                     <div class="col-sm-8 ">
-                        <input type="number" class="form-control" id="teacherLevel">
+                        <input type="number" class="form-control" id="teacherLevel" disabled="disabled">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size:17px">教师类型</label>
                     <div class="col-sm-8 ">
-                        <input type="text" class="form-control" id="teacherType">
+                        <input type="text" class="form-control" id="teacherType" disabled="disabled">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size:17px">教师入职时间</label>
                     <div class="col-sm-8 ">
-                        <input type="text" class="form-control" id="teacherEntryTime">
+                        <input type="text" class="form-control" id="teacherEntryTime" disabled="disabled">
                     </div>
+                </div>
+                <div class="form-group">
+
                 </div>
             </form>
         </div>

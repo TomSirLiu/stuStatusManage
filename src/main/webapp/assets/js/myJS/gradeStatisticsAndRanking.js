@@ -2,7 +2,7 @@
  * Created by Sir_Liu on 2018/1/6.
  */
 
-var statisticsType;
+var statisticsType = 'higherGradeFirst';
 
 function switchStatisticsType(type, typeName) {
     statisticsType = type;
@@ -33,10 +33,28 @@ function statisticsAndRankGrades() {
                     '<td>' + grades[i].courseName + '</td>' +
                     '<td>' + grades[i].courseTopLimit + '</td>' +
                     '<td>' + grades[i].courseType + '</td>' +
-                    '<td>' + grades[i].teacherName + '</td>' +
+                    '<td><button class="btn btn-primary" data-toggle="modal" data-target="#teacherModal" onclick="selectTeacherByName(\'' + grades[i].teacherName + '\')">' + grades[i].teacherName + '</button></td>' +
                     '<td>' + grades[i].grade + '</td>' +
                     '</tr>');
             }
+        }
+    })
+}
+
+function selectTeacherByName(teacherName) {
+    $.get({
+        async: false,
+        url: "/stuStatusManage/selectByTeacherName",
+        data: {
+            teacherName: teacherName
+        },
+        success: function (data) {
+            var teacher = JSON.parse(data).teacher;
+            $("#teacherID").val(teacher.teacherId);
+            $("#teacherName").val(teacher.teacherName);
+            $("#teacherLevel").val(teacher.teacherLevel);
+            $("#teacherType").val(teacher.teacherType);
+            $("#teacherEntryTime").val(new Date(teacher.teacherEntryTime).toLocaleString());
         }
     })
 }
