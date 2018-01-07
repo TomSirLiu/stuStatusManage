@@ -1,8 +1,10 @@
 package cn.sirLiu.controller;
 
+import cn.sirLiu.model.StuStatus;
 import cn.sirLiu.model.Student;
 import cn.sirLiu.model.json.Msg;
 import cn.sirLiu.model.json.StudentJson;
+import cn.sirLiu.service.StuStatusService;
 import cn.sirLiu.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,9 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private StuStatusService stuStatusService;
 
     @RequestMapping(value = "/addStudent")
     public String addStudent(@RequestParam("addStuID") Integer stuId,
@@ -82,9 +87,28 @@ public class StudentController {
     public String selectStuByID(@RequestParam(value = "selectStuID") Integer stuID) {
         Student student = studentService.selectStuByID(stuID);
         if (student != null) {
-            return Msg.success().add("student", student).toString();
+            return Msg.success().add("student", studentService.convertStudentToJSON(student)).toString();
         } else {
             return Msg.fail().add("error", "找不到符合该学号的学生").toString();
+        }
+    }
+
+    @RequestMapping(value = "/alterStuStatusByID")
+    @ResponseBody
+    public String alterStuStatusByID(@RequestParam(value = "alterStuID") Integer stuID,
+                                     @RequestParam(value = "stuStatusID") Integer stuStatusID) {
+        Student student = studentService.selectStuByID(stuID);
+        if (student != null) {
+            StuStatus stuStatus = stuStatusService.selectStuStatusByID(stuStatusID);
+            if (stuStatus != null) {
+                student.setStuStatusId(stuStatusID);
+                studentService.updateStu(student);
+                return Msg.success().toString();
+            } else {
+                return Msg.fail().add("error", "学生状态ID不存在！").toString();
+            }
+        } else {
+            return Msg.fail().add("error", "找不到符合该学号的学生！").toString();
         }
     }
 
