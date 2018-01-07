@@ -25,6 +25,9 @@ function statisticsAndRankGrades() {
             var grades = JSON.parse(data).grades;
             $("#queryGradesGroup").html("");
             for (var i = 0; i < grades.length; i++) {
+                if (grades[i].grade === undefined) {
+                    grades[i].grade = "无";
+                }
                 $("#queryGradesGroup").append('<tr>' +
                     '<td>' + (i + 1) + '</td>' +
                     '<td>' + grades[i].stuID + '</td>' +

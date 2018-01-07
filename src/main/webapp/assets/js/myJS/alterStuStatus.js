@@ -36,6 +36,7 @@ function selectStu() {
                 $("#alterStuClassName").val(info.student.stuClass.className);
                 $("#ManagerForAlterStu").val(info.student.manager.managerName);
                 $("#alterStuStatus").val(info.student.stuStatus.stuStatusId);
+                $("#alterStuForm")[0].reset();
             }
         }
     })

@@ -58,7 +58,6 @@ $(function () {
                 '    <ul class="nav nav-sidebar">\n' +
                 '        <li class="active"><h3>&nbsp; 学生成绩 <span class="sr-only">(current)</span></h3></li>\n' +
                 '        <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; 成绩查询</a></li>\n' +
-                '        <li><a href="/stuStatusManage/page/gradeStatisticsAndRankingPage">&nbsp; 成绩统计及排名</a></li>\n' +
                 '    </ul>');
         } else if (hasLoginType === "manager") {
             $("#authorityDiv").html('<ul class="nav nav-sidebar">' +

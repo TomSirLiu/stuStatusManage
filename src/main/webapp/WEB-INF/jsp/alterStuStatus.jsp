@@ -4,7 +4,7 @@
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <form class="form-horizontal">
-        <div class="form-group">
+        <div class="form-group" id="alterStuForm">
             <label class="col-sm-2 control-label" for="alterStuId">学号</label>
             <div class="col-sm-8">
                 <input type="number" class="form-control" id="alterStuId"/>

@@ -13,6 +13,7 @@ function queryStu() {
     var queryStuID = $("#queryStuID").val();
     var hasLoginType = window.sessionStorage.getItem("hasLoginType");
     if (hasLoginType === "student") {
+        window.alert("学生只能查看自己的信息！");
         $.get({
             url: "/stuStatusManage/selectStuByName",
             async: false,
