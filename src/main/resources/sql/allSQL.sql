@@ -102,7 +102,7 @@ CREATE TABLE grade (
   FOREIGN KEY (stu_id) REFERENCES student (stu_id),
   FOREIGN KEY (course_id) REFERENCES course (course_id),
   PRIMARY KEY (stu_id, course_id)
-) CHARSET utf8COMMENT '选课及成绩表';
+) CHARSET utf8 COMMENT '选课及成绩表';
 SELECT *
 FROM grade;
 INSERT INTO grade VALUES (283301193, 001, now(), 88);

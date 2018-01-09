@@ -31,7 +31,7 @@ function queryStu() {
                     '<td>' + currentStudent.stuStatus.stuStatusName + '</td>' +
                     '<td>' + currentStudent.stuClass.className + '</td>' +
                     '<td>' + currentStudent.manager.managerName + '</td>' +
-                    '<td><button class="btn btn-primary" onclick="deleteStu(' + currentStudent.stuId + ')">删除</button></td>' +
+                    '<td><button class="btn btn-danger" onclick="deleteStu(' + currentStudent.stuId + ')">删除</button></td>' +
                     '</tr>');
             }
         });

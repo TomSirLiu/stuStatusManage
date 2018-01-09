@@ -108,7 +108,15 @@ function login() {
                 window.sessionStorage.setItem("hasLoginType", loginType);
                 window.sessionStorage.setItem("hasLoginName", loginName);
                 $("#confirmHint").bind("click", function () {
-                    window.location.reload();
+                    if (loginType === "manager") {
+                        window.location.href = "/stuStatusManage/page/addStudentPage";
+                    } else if (loginType === "teacher") {
+                        window.location.href = "/stuStatusManage/page/importGradePage";
+                    } else if (loginType === "student") {
+                        window.location.href = "/stuStatusManage/page/selectAndDeleteStudentPage";
+                    } else {
+                        window.location.reload();
+                    }
                 });
                 $("#hintModal p").html("&nbsp&nbsp&nbsp;恭喜，&nbsp;<b>" + loginName + "</b>&nbsp;!用户登陆成功！将为您自动登陆!");
                 $('#hintModal').modal({

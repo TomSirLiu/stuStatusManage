@@ -20,7 +20,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:;" id="hasLoginName" data-toggle="modal" data-target="#loginModal">请先登陆</a></li>
+                <li><a href="javascript:;" id="hasLoginName">请先登陆</a></li>
                 <li><a href="javascript:;">Settings</a></li>
                 <li><a href="javascript:;" id="exitLogin">退出登陆</a></li>
                 <li><a href="javascript:;">Help</a></li>
