@@ -46,39 +46,39 @@ $(function () {
         var hasLoginType = window.sessionStorage.getItem("hasLoginType");
         if (hasLoginType === "teacher") {
             $("#authorityDiv").html('<ul class="nav nav-sidebar">\n' +
-                '        <li class="active"><h3>&nbsp; 学生成绩 <span class="sr-only">(current)</span></h3></li>\n' +
-                '        <li><a href="/stuStatusManage/page/importGradePage">&nbsp; 成绩录入/修改</a></li>\n' +
-                '        <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; 成绩查询/删除</a></li>\n' +
+                '        <li class="active"><h3>&nbsp; &#x5B66;&#x751F;&#x6210;&#x7EE9; <span class="sr-only">(current)</span></h3></li>\n' +
+                '        <li><a href="/stuStatusManage/page/importGradePage">&nbsp; &#x6210;&#x7EE9;&#x5F55;&#x5165;/&#x4FEE;&#x6539;</a></li>\n' +
+                '        <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; &#x6210;&#x7EE9;&#x67E5;&#x8BE2;/&#x5220;&#x9664;</a></li>\n' +
                 '    </ul>');
         } else if (hasLoginType === "student") {
             $("#authorityDiv").html('<ul class="nav nav-sidebar">\n' +
-                '        <li class="active"><h3>&nbsp; 学生基本情况 <span class="sr-only">(current)</span></h3></li>\n' +
-                '        <li><a href="/stuStatusManage/page/selectAndDeleteStudentPage">&nbsp; 学生基本信息查询</a></li>\n' +
+                '        <li class="active"><h3>&nbsp; &#x5B66;&#x751F;&#x57FA;&#x672C;&#x60C5;&#x51B5; <span class="sr-only">(current)</span></h3></li>\n' +
+                '        <li><a href="/stuStatusManage/page/selectAndDeleteStudentPage">&nbsp; &#x5B66;&#x751F;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x67E5;&#x8BE2;</a></li>\n' +
                 '    </ul>\n' +
                 '    <ul class="nav nav-sidebar">\n' +
-                '        <li class="active"><h3>&nbsp; 学生成绩 <span class="sr-only">(current)</span></h3></li>\n' +
-                '        <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; 成绩查询</a></li>\n' +
+                '        <li class="active"><h3>&nbsp; &#x5B66;&#x751F;&#x6210;&#x7EE9; <span class="sr-only">(current)</span></h3></li>\n' +
+                '        <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; &#x6210;&#x7EE9;&#x67E5;&#x8BE2;</a></li>\n' +
                 '    </ul>');
         } else if (hasLoginType === "manager") {
             $("#authorityDiv").html('<ul class="nav nav-sidebar">' +
-                '<li class="active"><h3>&nbsp; 学生基本情况 <span class="sr-only">(current)</span></h3></li>' +
-                '   <li><a href="/stuStatusManage/page/addStudentPage">&nbsp; 学生录入</a></li>' +
-                '   <li><a href="/stuStatusManage/page/alterStudentPage">&nbsp; 学生基本信息修改</a></li>' +
-                '   <li><a href="/stuStatusManage/page/selectAndDeleteStudentPage">&nbsp; 学生基本信息查询/删除</a></li>' +
+                '<li class="active"><h3>&nbsp; &#x5B66;&#x751F;&#x57FA;&#x672C;&#x60C5;&#x51B5; <span class="sr-only">(current)</span></h3></li>' +
+                '   <li><a href="/stuStatusManage/page/addStudentPage">&nbsp; &#x5B66;&#x751F;&#x5F55;&#x5165;</a></li>' +
+                '   <li><a href="/stuStatusManage/page/alterStudentPage">&nbsp; &#x5B66;&#x751F;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x4FEE;&#x6539;</a></li>' +
+                '   <li><a href="/stuStatusManage/page/selectAndDeleteStudentPage">&nbsp; &#x5B66;&#x751F;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x67E5;&#x8BE2;/&#x5220;&#x9664;</a></li>' +
                 '   </ul>' +
                 '   <ul class="nav nav-sidebar">' +
-                '   <li class="active"><h3>&nbsp; 学生成绩 <span class="sr-only">(current)</span></h3></li>' +
-                '   <li><a href="/stuStatusManage/page/importGradePage">&nbsp; 成绩录入/修改</a></li>' +
-                '   <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; 成绩查询/删除</a></li>' +
-                '   <li><a href="/stuStatusManage/page/gradeStatisticsAndRankingPage">&nbsp; 成绩统计及排名</a></li>' +
+                '   <li class="active"><h3>&nbsp; &#x5B66;&#x751F;&#x6210;&#x7EE9; <span class="sr-only">(current)</span></h3></li>' +
+                '   <li><a href="/stuStatusManage/page/importGradePage">&nbsp; &#x6210;&#x7EE9;&#x5F55;&#x5165;/&#x4FEE;&#x6539;</a></li>' +
+                '   <li><a href="/stuStatusManage/page/selectAndDeleteGradePage">&nbsp; &#x6210;&#x7EE9;&#x67E5;&#x8BE2;/&#x5220;&#x9664;</a></li>' +
+                '   <li><a href="/stuStatusManage/page/gradeStatisticsAndRankingPage">&nbsp; &#x6210;&#x7EE9;&#x7EDF;&#x8BA1;&#x53CA;&#x6392;&#x540D;</a></li>' +
                 '   </ul>' +
                 '   <ul class="nav nav-sidebar">' +
-                '   <li class="active"><h3>&nbsp; 班级管理 <span class="sr-only">(current)</span></h3></li>' +
-                '   <li><a href="/stuStatusManage/page/chooseCourseWithClassPage">&nbsp; 班级选课</a></li>' +
+                '   <li class="active"><h3>&nbsp; &#x73ED;&#x7EA7;&#x7BA1;&#x7406; <span class="sr-only">(current)</span></h3></li>' +
+                '   <li><a href="/stuStatusManage/page/chooseCourseWithClassPage">&nbsp; &#x73ED;&#x7EA7;&#x9009;&#x8BFE;</a></li>' +
                 '   </ul>' +
                 '   <ul class="nav nav-sidebar">' +
-                '   <li class="active"><h3>&nbsp; 特殊情况 <span class="sr-only">(current)</span></h3></li>' +
-                '   <li><a href="/stuStatusManage/page/alterStuStatusPage">&nbsp;学籍状态</a></li>' +
+                '   <li class="active"><h3>&nbsp; &#x7279;&#x6B8A;&#x60C5;&#x51B5; <span class="sr-only">(current)</span></h3></li>' +
+                '   <li><a href="/stuStatusManage/page/alterStuStatusPage">&nbsp;&#x5B66;&#x7C4D;&#x72B6;&#x6001;</a></li>' +
                 '   </ul>');
         }
     }
